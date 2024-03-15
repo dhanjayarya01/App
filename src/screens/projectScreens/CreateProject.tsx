@@ -9,10 +9,18 @@ import DocumentPiker from 'react-native-document-picker'
 
 ////////////main///////////////////////////////////////////////////////////////////////////
 const CreateProject = () => {
-  const [picdoc,setPicdoc]=useState('')
+  const [userId, setUserId] = useState('')
+  const { database,uniqueId,setUniqueId,picdoc,setPicdoc} = useContext(DatabaseContext)
+  const { appwrite, isLoggedIn, setIsLoggedIn } = useContext(AppwriteContext)
+  const [error, setError] = useState('')
+  const [title, setTitle] = useState('')
+  const [github, setGithub] = useState('')
+  const [content, setContent] = useState('')
+  const [featuredImage, setFeaturedImage] = useState('')
+  const [Requirement, setRequirement] = useState('')
+  const [TechnologyUsed, setTechnologyUsed] = useState('')
   
   const selectDoc = async ()=>{
-    
     try{
       const doc=await DocumentPiker.pick()
       console.log(doc[0].uri)
@@ -25,19 +33,12 @@ const CreateProject = () => {
     }
   }
   }
-useEffect(() => {
-  console.log("picdoc", picdoc);
-}, [picdoc]);
 
-  const [userId, setUserId] = useState('')
-  const { database,uniqueId,setUniqueId} = useContext(DatabaseContext)
-  const { appwrite, isLoggedIn, setIsLoggedIn } = useContext(AppwriteContext)
-  const [error, setError] = useState('')
-  const [title, setTitle] = useState('')
-  const [github, setGithub] = useState('')
-  const [content, setContent] = useState('')
-  const [Requirement, setRequirement] = useState('')
-  const [TechnologyUsed, setTechnologyUsed] = useState('')
+  useEffect(() => {
+    console.log("picdoc", picdoc);
+
+  }, [picdoc]);
+
   
   
   function generateUniqueId() {
@@ -108,10 +109,10 @@ useEffect(() => {
       text: error,
       duration: Snackbar.LENGTH_LONG
     }))
-
-
-
   }
+
+
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'android' ? 'padding' : 'height'}>
@@ -144,7 +145,7 @@ useEffect(() => {
             <View style={{ flexDirection: 'row', marginTop: 12, marginLeft: 6 }}>
               <View style={styles.dppicdiv}>
                 <ImageBackground
-                  source={require('../projectScreens/img.png')}
+                  source={picdoc ? {uri:picdoc}:require('../projectScreens/Empty.png')}
                   resizeMode='cover'
                   style={{ width: '100%', height: '100%', borderRadius: 3, }}>
                 </ImageBackground>
@@ -218,7 +219,7 @@ const styles = StyleSheet.create({
     height: 85,
     width: 85,
     borderRadius: 30,
-    backgroundColor: 'red',
+    backgroundColor: 'white',
   },
 
 

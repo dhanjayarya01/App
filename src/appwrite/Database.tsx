@@ -20,7 +20,7 @@ class DatabaseService{
         this.bucket=new Storage(this.client)
     }
 
-    async createPost({title,uniqueId,content,userId,Requirement,TechnologyUsed,github}){
+    async createPost({title,uniqueId,content,userId,Requirement,featureimage,TechnologyUsed,github}){
         try{
              console.log("enter in try create post")
             return await this.databases.createDocument(
@@ -32,6 +32,7 @@ class DatabaseService{
                     userId,
                     content,
                     TechnologyUsed,
+                    featureimage,
                     Requirement,
                     github
                 }
