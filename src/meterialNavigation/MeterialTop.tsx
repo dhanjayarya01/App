@@ -8,7 +8,7 @@ const Top=createMaterialTopTabNavigator()
 const MeterialTop = () => {
   return (
     <Top.Navigator 
-    initialRouteName='Signup'
+    initialRouteName='Login'
     screenOptions={{
       tabBarLabelStyle: { fontSize:14,},
       tabBarContentContainerStyle:{height:35,backgroundColor: 'rgba(0,0, 0, 0.1)'},
