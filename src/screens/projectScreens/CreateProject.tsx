@@ -7,11 +7,13 @@ import AppwriteContext from '../../appwrite/AppwriteContext';
 import Snackbar from 'react-native-snackbar';
 import DocumentPiker from 'react-native-document-picker'
 
-////////////main///////////////////////////////////////////////////////////////////////////
+///////
 const CreateProject = () => {
   const [userId, setUserId] = useState('')
   const { database,uniqueId,setUniqueId,picdoc,setPicdoc} = useContext(DatabaseContext)
   const { appwrite, isLoggedIn, setIsLoggedIn } = useContext(AppwriteContext)
+////////
+
   const [error, setError] = useState('')
   const [title, setTitle] = useState('')
   const [github, setGithub] = useState('')
@@ -35,9 +37,9 @@ const CreateProject = () => {
   }
 
   useEffect(() => {
-    console.log("picdoc", picdoc);
+    console.log("uni", uniqueId);
 
-  }, [picdoc]);
+  }, [uniqueId]);
 
   
   
@@ -174,7 +176,7 @@ const CreateProject = () => {
           />
 
 
-          <TouchableOpacity onPress={handlesubmit} style={{ height: 44, width: 120, backgroundColor: 'red', marginLeft: 44 }}><Text>DONE</Text></TouchableOpacity>
+          <TouchableOpacity onPress={handlesubmit} style={{ height: 44, width: 120, backgroundColor: 'red', marginLeft: 44,marginTop:44 }}><Text>DONE</Text></TouchableOpacity>
         </View>
 
       </ScrollView>
