@@ -9,6 +9,16 @@ const Login = ({navigation}) => {
   const[password,setPassword]=useState('')
 
   const {appwrite,setIsLoggedIn}=useContext(AppwriteContext)
+  
+  const validateEmail = (email) => {
+    // Regular expression for validating email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePassword = (password) => {
+    return password.length >= 12;
+  };
   const handleSubmit=()=>{
   
     if (
@@ -16,7 +26,12 @@ const Login = ({navigation}) => {
     password.length < 1
     ) {
       setError('All fields are required');
-    
+    }
+      else if (!validateEmail(email)) {
+        setError('Please enter a valid email address');
+      } else if (!validatePassword(password)) {
+        setError('Password must be at least 12 characters long');
+  
     } else {
       const user = {
         email,
@@ -121,10 +136,7 @@ const styles = StyleSheet.create({
   input: {
     paddingLeft: 18,
     fontSize: 16,
-    color:'red',
     fontWeight:'bold',
-    // borderColor:'black',
-    // borderWidth:1,
     borderRadius: 20,
     marginBottom: 16,
     backgroundColor: 'white', // Set background color for TextInput
