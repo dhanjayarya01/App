@@ -5,9 +5,12 @@ import { useState } from "react"
  
  const AppwriteProvider=({children})=>{
     const[isLoggedIn,setIsLoggedIn]=useState(false)
+    const[currentuserinfo,setCurrentuserinfo]=useState({})
     const defaultValue={
         appwrite:new AppwriteService(), 
         isLoggedIn,
+        currentuserinfo,
+        setCurrentuserinfo,
         setIsLoggedIn
          
     }

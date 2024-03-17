@@ -10,7 +10,7 @@ const Project = () => {
     <Top.Navigator initialRouteName='Allproject'
     screenOptions={{
       tabBarLabelStyle: { fontSize:14,color:'#083945'},
-      tabBarContentContainerStyle:{height:35,backgroundColor: 'rgba(0,0, 0, 0.1)'},
+      tabBarContentContainerStyle:{height:35,backgroundColor: 'rgba(220,224,238,0.5)'},
     }}
     >
       <Top.Screen

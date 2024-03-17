@@ -1,4 +1,4 @@
-import { KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { FlatList, KeyboardAvoidingView, StyleSheet, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useContext } from 'react'
 import DatabaseContext from '../../appwrite/DatabaseContext'
@@ -18,23 +18,31 @@ const Allproject = () => {
       }
     }
     fetchdata();
-    console.log(data)
   }, [data]);
 
+  const renderProjectCard = ({ item }) => (
+    <ProjectCard
+      title={item.title}
+      technology={item.TechnologyUsed}
+      requirement={item.Requirement}
+    />
+  );
+
   return (
-    <ScrollView>
-    <KeyboardAvoidingView>
-      <View>
-        
-        {data.map((rep, index) => (
-        <ProjectCard title={rep.title} technology={rep.TechnologyUsed} requirement={rep.Requirement}/>
-        ))}
-      </View>
+    <KeyboardAvoidingView style={styles.container}>
+      <FlatList
+        data={data}
+        renderItem={renderProjectCard}
+        keyExtractor={(item, index) => index.toString()}
+      />
     </KeyboardAvoidingView>
-    </ScrollView>
-  )
+  );
 }
 
-export default Allproject
+export default Allproject;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});

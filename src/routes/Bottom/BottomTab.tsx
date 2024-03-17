@@ -7,11 +7,16 @@ import Mywork from '../../screens/Mywork'
 import ChatBot from '../../screens/ChatBot'
 import Profile from '../../screens/Profile'
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { useContext } from 'react'
+import DatabaseContext from '../../appwrite/DatabaseContext'
 const BotTab=createBottomTabNavigator()
+
 const BottomTab = () => {
+  const {picdoc} = useContext(DatabaseContext)
+
   const route = useRoute();
   return (
-    <BotTab.Navigator
+    <BotTab.Navigator initialRouteName='Profile'
     screenOptions={{
       headerShown: false, 
       
@@ -46,9 +51,9 @@ const BottomTab = () => {
         name='Profile'
         component={Profile}
         options={{
-          tabBarIcon: ({ size }) => (
-            <View style={{width:'100%'}}>
-            <Image source={require('./angel.png')} resizeMode='contain' style={{height:28,width:'100%'}}></Image>
+          tabBarIcon: () => (
+            <View style={{width:35,borderRadius:17}}>
+            <Image source={picdoc ? {uri:picdoc}:require('./angel.png')}resizeMode='cover' style={{height:'100%',width:'100%',borderRadius:50}}></Image>
             </View>),
         }}
         />

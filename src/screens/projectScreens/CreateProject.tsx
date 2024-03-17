@@ -10,10 +10,11 @@ import DocumentPiker from 'react-native-document-picker'
 ///////
 const CreateProject = () => {
   const [userId, setUserId] = useState('')
-  const { database,uniqueId,setUniqueId,picdoc,setPicdoc} = useContext(DatabaseContext)
+  const { database,uniqueId,setUniqueId} = useContext(DatabaseContext)
   const { appwrite, isLoggedIn, setIsLoggedIn } = useContext(AppwriteContext)
 ////////
-
+  //remove from all 
+  const [picdoc,setPicdoc]=useState("")
   const [error, setError] = useState('')
   const [title, setTitle] = useState('')
   const [github, setGithub] = useState('')
