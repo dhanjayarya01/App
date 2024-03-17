@@ -48,7 +48,7 @@ const Profile = () => {
           
         <TouchableOpacity style={styles.picdiv} onPress={selectDoc} >
                <ImageBackground 
-                  source={picdoc ? {uri:picdoc}:require('../routes/Bottom/angel.png')}
+                  source={picdoc ? {uri:picdoc}:require('../asserts/angel.png')}
                   resizeMode='cover'
                   style={{ width: '100%', height: '100%',}}>
                 </ImageBackground>

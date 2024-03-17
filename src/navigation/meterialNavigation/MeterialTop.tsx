@@ -1,8 +1,8 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
-import Signup from '../screens/Signup'
-import Login from '../screens/Login'
+import Signup from '../../screens/Signup'
+import Login from '../../screens/Login'
 
 const Top=createMaterialTopTabNavigator()
 const MeterialTop = () => {

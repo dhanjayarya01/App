@@ -147,7 +147,7 @@ const CreateProject = () => {
             <View style={{ flexDirection: 'row', marginTop: 12, marginLeft: 6 }}>
               <View style={styles.dppicdiv}>
                 <ImageBackground
-                  source={picdoc ? {uri:picdoc}:require('../projectScreens/Empty.png')}
+                  source={picdoc ? {uri:picdoc}:require('../../asserts/Empty.png')}
                   resizeMode='cover'
                   style={{ width: '100%', height: '100%', borderRadius: 3, }}>
                 </ImageBackground>

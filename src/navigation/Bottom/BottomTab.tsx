@@ -28,7 +28,7 @@ const BottomTab = () => {
         component={Project}
         options={{
           tabBarIcon: ({ color, size }) => (
-          <Image source={require('./box.png')} resizeMode='contain'style={{ height: 24,width:'100%',tintColor: route.name =='Project' ? 'blue' : color}}></Image>),
+          <Image source={require('../../asserts/box.png')} resizeMode='contain'style={{ height: 24,width:'100%',tintColor: route.name =='Project' ? 'blue' : color}}></Image>),
         }}
       
         />
@@ -53,7 +53,7 @@ const BottomTab = () => {
         options={{
           tabBarIcon: () => (
             <View style={{width:35,borderRadius:17}}>
-            <Image source={picdoc ? {uri:picdoc}:require('./angel.png')}resizeMode='cover' style={{height:'100%',width:'100%',borderRadius:50}}></Image>
+            <Image source={picdoc ? {uri:picdoc}:require('../../asserts/angel.png')}resizeMode='cover' style={{height:'100%',width:'100%',borderRadius:50}}></Image>
             </View>),
         }}
         />
