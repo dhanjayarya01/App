@@ -17,7 +17,7 @@ const Login = ({navigation}) => {
   };
 
   const validatePassword = (password) => {
-    return password.length >= 12;
+    return password.length >= 8;
   };
   const handleSubmit=()=>{
   
@@ -30,7 +30,7 @@ const Login = ({navigation}) => {
       else if (!validateEmail(email)) {
         setError('Please enter a valid email address');
       } else if (!validatePassword(password)) {
-        setError('Password must be at least 12 characters long');
+        setError('Password must be at least 8 characters long');
   
     } else {
       const user = {
