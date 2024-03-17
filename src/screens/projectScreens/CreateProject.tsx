@@ -41,8 +41,6 @@ const CreateProject = () => {
 
   }, [uniqueId]);
 
-  
-  
   function generateUniqueId() {
     return Date.now().toString(36) + Math.random().toString(36);
   }
@@ -72,7 +70,7 @@ const CreateProject = () => {
         }))
       }
       else {
-      
+      const status="active"
       setUniqueId(generateUniqueId())
     console.log("bottom",uniqueId)
       setError('')
@@ -80,6 +78,7 @@ const CreateProject = () => {
         uniqueId,
         title,
         content,
+        status,
         TechnologyUsed,
         userId,
         Requirement,

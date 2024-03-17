@@ -20,7 +20,7 @@ class DatabaseService{
         this.bucket=new Storage(this.client)
     }
 
-    async createPost({title,uniqueId,content,userId,Requirement,featureimage,TechnologyUsed,github}){
+    async createPost({title,uniqueId,content,userId,Requirement,featureimage,TechnologyUsed,github,status}){
         try{
              console.log("enter in try create post")
             return await this.databases.createDocument(
@@ -31,6 +31,7 @@ class DatabaseService{
                     title,
                     userId,
                     content,
+                    status,
                     TechnologyUsed,
                     featureimage,
                     Requirement,
@@ -77,7 +78,7 @@ class DatabaseService{
    
     async getPosts(queries=[Query.equal("status","active")]){
         try{
-            return await this.databases.listDocuments(APPWRITE_DATABASE_ID,APPWRITE_DATABASE_ID,queries)
+            return await this.databases.listDocuments(APPWRITE_DATABASE_ID,APPWRITE_COLLECTION_ID,queries)
         } catch(error){
             console.log("Appwrite service :: getposts",error)
         }
