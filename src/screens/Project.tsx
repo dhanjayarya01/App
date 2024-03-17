@@ -7,7 +7,12 @@ import CreateProject from './projectScreens/CreateProject'
 const Top=createMaterialTopTabNavigator()
 const Project = () => {
   return (
-    <Top.Navigator initialRouteName='CreateProject'>
+    <Top.Navigator initialRouteName='Allproject'
+    screenOptions={{
+      tabBarLabelStyle: { fontSize:14,color:'#083945'},
+      tabBarContentContainerStyle:{height:35,backgroundColor: 'rgba(0,0, 0, 0.1)'},
+    }}
+    >
       <Top.Screen
       name='ALLProject'
       component={Allproject}

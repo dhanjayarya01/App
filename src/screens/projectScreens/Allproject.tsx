@@ -1,23 +1,37 @@
-import { KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import { useContext } from 'react'
 import DatabaseContext from '../../appwrite/DatabaseContext'
-import { Query } from 'appwrite'
+import ProjectCard from './ProjectCard'
+
 const Allproject = () => {
-  let aa;
-  const {database,uniqueId}=useContext(DatabaseContext)
-  console.log(uniqueId)
-  database.getPosts([])
-  .then((responce)=>{
-     aa=responce;
-     console.log("res",aa)
-  })
+  const [data, setData] = useState([])
+  const { database } = useContext(DatabaseContext)
+  
+  useEffect(() => {
+    const fetchdata = async () => {
+      try {
+        const response = await database.getPosts([]);
+        setData(response?.documents);
+      } catch(error) {
+        console.log("fetchdata alldata", error)
+      }
+    }
+    fetchdata();
+    console.log(data)
+  }, [data]);
+
   return (
-        <KeyboardAvoidingView>
-        <View>
-        <Text>hi</Text>
-        </View>
-        </KeyboardAvoidingView>
+    <ScrollView>
+    <KeyboardAvoidingView>
+      <View>
+        
+        {data.map((rep, index) => (
+        <ProjectCard title={rep.title} technology={rep.TechnologyUsed} requirement={rep.Requirement}/>
+        ))}
+      </View>
+    </KeyboardAvoidingView>
+    </ScrollView>
   )
 }
 
